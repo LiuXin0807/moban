@@ -10,18 +10,18 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/login') {
       next({ path: '/' })
     } else {
-      if (store.getters.roles.length === 0) {
-        store.dispatch('GetInfo').then(res => { // 拉取用户信息
+      // if (store.getters.roles.length === 0) {
+      //   store.dispatch('GetInfo').then(res => { // 拉取用户信息
           next()
-        }).catch((err) => {
-          store.dispatch('FedLogOut').then(() => {
-
-            next({ path: '/' })
-          })
-        })
-      } else {
-        next()
-      }
+      //   }).catch((err) => {
+      //     store.dispatch('FedLogOut').then(() => {
+      //
+      //       next({ path: '/' })
+      //     })
+      //   })
+      // } else {
+      //   next()
+      // }
     }
   } else {
     if (whiteList.indexOf(to.path) !== -1) {

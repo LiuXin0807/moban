@@ -31,7 +31,7 @@
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
-
+import { getToken, setToken, removeToken } from '@/utils/auth'
 export default {
   name: 'login',
   data() {
@@ -71,20 +71,28 @@ export default {
       }
     },
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
-        if (valid) {
-          this.loading = true
-          this.$store.dispatch('Login', this.loginForm).then(() => {
-            this.loading = false
-            this.$router.push({ path: '/' })
-          }).catch(() => {
-            this.loading = false
-          })
-        } else {
-          console.log('error submit!!')
-          return false
-        }
-      })
+      this.loading = true
+      setToken('Admin')
+      this.$router.push({ path: '/' })
+
+      this.loading = false
+//      this.$refs.loginForm.validate(valid => {
+//        if (valid) {
+//
+//          this.$api.post('/vue-admin/user/login', this.loginForm).then(res=>{
+//          },res=>{
+//          })
+//          /*this.$store.dispatch('Login', this.loginForm).then(() => {
+//            this.loading = false
+//            this.$router.push({ path: '/' })
+//          }).catch(() => {
+//            this.loading = false
+//          })*/
+//        } else {
+//          console.log('error submit!!')
+//          return false
+//        }
+//      })
     }
   }
 }

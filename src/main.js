@@ -14,11 +14,12 @@ import store from './store'
 
 import '@/icons' // icon
 import '@/permission' // permission control
+import api from './utils/api'
 
 Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false
-
+Object.defineProperty(Vue.prototype, '$api', {value: api})
 new Vue({
   el: '#app',
   router,

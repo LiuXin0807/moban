@@ -27,15 +27,122 @@ export const constantRouterMap = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: 'dashboard',
     name: 'Dashboard',
     hidden: true,
     children: [{
-      path: 'dashboard',
+      path: '/dashboard',
       component: resolve => require(['@/views/dashboard/index'], resolve),
-      meta: { title: '控制台', icon: 'form' }
+
     }]
   },
+  {
+    path: '/index',
+    component: Layout,
+    children: [
+      {
+        path: 'page',
+        name: 'kongzhitai',
+        component: resolve => require(['@/views/dashboard/index'], resolve),
+        meta: { title: '控制台', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/minipro',
+    component: Layout,
+    redirect: '/minipro/index',
+    name: 'minipro',
+    meta: { title: '小程序/公众号', icon: 'form' },
+    children: [
+      {
+        path: 'index',
+        name: 'xiaochengxu',
+        component: resolve => require(['@/views/minipro/index'], resolve),
+        meta: { title: '小程序', icon: 'form' }
+      },{
+        path: 'index2',
+        name: 'gongzhonghao',
+        component: resolve => require(['@/views/form/index'], resolve),
+        meta: { title: '公众号', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/order',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'orderCenter',
+        component: resolve => require(['@/views/form/index'], resolve),
+        meta: { title: '订单中心', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/slist',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'serverList',
+        component: resolve => require(['@/views/form/index'], resolve),
+        meta: { title: '服务列表', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/clist',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'customList',
+        component: resolve => require(['@/views/form/index'], resolve),
+        meta: { title: '客户列表', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/finCenter',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'financialCenter',
+        component: resolve => require(['@/views/form/index'], resolve),
+        meta: { title: '财务中心', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/numCenter',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'numCenter',
+        component: resolve => require(['@/views/form/index'], resolve),
+        meta: { title: '数据统计', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/powerControl',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'powerControl',
+        component: resolve => require(['@/views/form/index'], resolve),
+        meta: { title: '权限控制', icon: 'form' }
+      }
+    ]
+  },
+
+
+  /*模板*/
   {
     path: '/example',
     component: Layout,
